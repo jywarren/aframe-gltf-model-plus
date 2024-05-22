@@ -87,61 +87,6 @@
       </a-entity>
     </template>
 
-    <div
-      id="help-box"
-      style="
-        backdrop-filter: blur(4px);
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 0.5rem;
-        color: #ffffff;
-        left: 1.5rem;
-        padding: 1rem;
-        position: absolute;
-        top: 1.5rem;
-        width: 22em;
-        z-index: 1;
-      "
-    >
-      <div class="help-header" style="display: flex; flex: row; justify-content: space-between">
-        <h2 style="margin: 0; font-size: 1.2rem">Help</h2>
-        <button
-          class="close"
-          style="background: rgba(255, 255, 255, 0.3); width: 1.5rem; height: 1.5rem; border-radius: 0.5rem"
-        >
-          x
-        </button>
-      </div>
-      <div id="help-content">
-        <ul style="margin: 0; padding: 0.5rem 0 0 0; list-style: none; font-size: 0.9rem">
-          <li>[wasd or arrows] move</li>
-          <li>[mouse left click drag] rotate camera</li>
-          <li>[left click on floor] teleport</li>
-          <li>[g] toggle fly mode</li>
-          <li>[shift down] move fast</li>
-          <li>[space] toggle visibility of clickable waypoints</li>
-          <li>&nbsp;</li>
-          <li>[click on the screen once] start the sound</li>
-        </ul>
-      </div>
-    </div>
-
-    <script>
-      const helpbox = document.querySelector("#help-box");
-      const btn = helpbox.querySelector("button.close");
-      const content = helpbox.querySelector("#help-content");
-      btn.addEventListener("click", () => {
-        if (content.hasAttribute("hidden")) {
-          content.style = "display:block;";
-          btn.innerHTML = "x";
-          content.removeAttribute("hidden");
-        } else {
-          content.style = "display:none;";
-          content.setAttribute("hidden", true);
-          btn.innerHTML = "v";
-        }
-      });
-    </script>
-
     <a-scene
       light="defaultLightsEnabled:true"
       renderer="physicallyCorrectLights:true;colorManagement:true"
@@ -163,13 +108,9 @@
         For another scene, you probably want to set it to a higher value.
       -->
       <a-assets timeout="30000">
-<<<<<<< HEAD
-        <a-asset-item id="sceneGLB" src="./hubs_components_example_006.glb"></a-asset-item>
-=======
         <!-- <a-asset-item id="sceneGLB" src="./hubs_components_example_001.glb"></a-asset-item>-->
         <a-asset-item id="sceneGLB" src="./burrill.glb"></a-asset-item>
         <a-asset-item id="objectsGLTF" src="./objects.gltf"></a-asset-item>
->>>>>>> tmp3
       </a-assets>
       <a-entity
         id="rig"
