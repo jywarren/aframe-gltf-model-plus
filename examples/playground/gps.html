@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Playground</title>
+    <meta name="description" content="This scene is an example using every possible hubs components we support." />
+    <!-- <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script> -->
+    <script src="../../dist/aframe-master-custom-r164.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/open-easyrtc@2.0.20/api/easyrtc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/networked-aframe@^0.12.0/dist/networked-aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/networked-aframe/naf-janus-adapter@3.2.0/examples/js/audio-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fern-solutions/aframe-mirror@1.1.1/dist/mirror.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-cursor-teleport@1.5.0/dist/aframe-cursor-teleport-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AdaRoseCannon/aframe-xr-boilerplate@bca4792/simple-navmesh-constraint.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-troika-text@0.11.0/dist/aframe-troika-text.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/networked-aframe/naf-valid-avatars@4b116a4/src/player-info.js"></script>
+
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js">
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js">
+
+    <script>
+      // @var url {string} The url as string.
+      window.absoluteURLForAsset = (url) => {
+        let newurl = "";
+
+        if (!url) return "";
+        if (url.startsWith("https://vr.unodo-design.com/assets/")) {
+          newurl = url.replace("https://vr.unodo-design.com/assets/", "./");
+        }
+
+        return newurl;
+      };
+    </script>
+    <script src="../../dist/gltf-model-plus.min.js"></script>
+    <script>
+      AFRAME.registerComponent("shortcuts", {
+        init() {
+          this.onKeyup = this.onKeyup.bind(this);
+        },
+        play() {
+          window.addEventListener("keyup", this.onKeyup, false);
+        },
+        pause() {
+          window.removeEventListener("keyup", this.onKeyup);
+        },
+        onKeyup(evt) {
+          if (!AFRAME.utils.shouldCaptureKeyEvent(evt)) {
+            return;
+          }
+
+          if (evt.keyCode === 71) {
+            // g
+            this.cameraRig = document.querySelector("#rig");
+            if (this.cameraRig.getAttribute("movement-controls").fly) {
+              this.cameraRig.setAttribute("movement-controls", "fly", false);
+              if (this.cameraRig.hasAttribute("simple-navmesh-constraint")) {
+                this.cameraRig.setAttribute("simple-navmesh-constraint", "enabled", true);
+              }
+            } else {
+              this.cameraRig.setAttribute("movement-controls", "fly", true);
+              if (this.cameraRig.hasAttribute("simple-navmesh-constraint")) {
+                this.cameraRig.setAttribute("simple-navmesh-constraint", "enabled", false);
+              }
+            }
+          }
+
+          if (evt.code === "Space") {
+            this.el.sceneEl.systems.waypoint.toggleClickableWaypoints();
+          }
+        },
+      });
+    </script>
+  </head>
+  <body>
+    <template id="avatar-template">
+      <a-entity player-info>
+        <a-entity class="model">
+          <a-text
+            class="nametag"
+            align="center"
+            value="anonymous"
+            position="0 2.1 0"
+            scale=".5 .5 .5"
+            look-at="#player"
+          ></a-text>
+        </a-entity>
+        <a-entity class="camera" position="0 1.6 0" networked-audio-source></a-entity>
+      </a-entity>
+    </template>
+
+    <a-scene
+      arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'
+      light="defaultLightsEnabled:true"
+      renderer="physicallyCorrectLights:true;colorManagement:true"
+      networked-scene="
+        connectOnLoad: false;
+        room: hub;
+        debug: true;
+        adapter: easyrtc;
+        audio: true;
+    "
+      shadow="type: pcfsoft"
+      gltf-model="meshoptDecoderPath:https://unpkg.com/meshoptimizer@0.19.0/meshopt_decoder.js"
+      raycaster="far: 5; objects: .clickable;"
+      cursor="rayOrigin: mouse"
+      shortcuts
+    >
+      <!-- We use above raycaster far: 5 instead of far: 100 to avoid issues when clicking on a waypoint of
+        a different level because this conflicts with cursor-teleport and navmesh.
+        For another scene, you probably want to set it to a higher value.
+      -->
+      <a-assets timeout="30000">
+        <!-- <a-asset-item id="sceneGLB" src="./hubs_components_example_001.glb"></a-asset-item>-->
+        <a-asset-item id="sceneGLB" src="./burrill.glb"></a-asset-item>
+        <a-asset-item id="objectsGLTF" src="./hubs/objects.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="rig"
+        cursor-teleport="cameraRig: #rig; cameraHead: #player; collisionEntities: .navmesh; ignoreEntities: .clickable"
+        simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0;exclude:.navmesh-hole;"
+        movement-controls="fly:false;controls: gamepad, trackpad, keyboard, nipple;"
+        move-to-spawn-point
+        networked="template:#avatar-template;attachTemplateToLocal:false"
+        player-info="avatarSrc: https://cdn.jsdelivr.net/gh/c-frame/valid-avatars-glb@c539a28/avatars/Asian/Asian_F_2_Casual.glb"
+      >
+        <a-entity id="player" class="camera" camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+
+      <a-camera simulateAltitude="120" gps-new-camera></a-camera>
+
+      <a-entity position="0 0 -250" gps-new-entity-place="longitude: -71.415001; latitude: 41.820647;" class="environment-settings" gltf-model-plus="#sceneGLB"></a-entity>
+      <!--<a-entity class="environment-settings" gltf-model-plus="#objectsGLTF"></a-entity>-->
+<!-- 
+ scale="0.5 0.5 0.5"
+lat: 41.82129802473228, lng: -71.41502773093613
+-->
+
+      <a-entity light="type: ambient; intensity: 0.2"></a-entity>
+      <a-entity light="type: directional; color: #f8f0ff; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+      <a-entity light="type: point; color: #f4f4f4; intensity: 10.0; distance: 0" position="0 2 0"></a-entity>
+
+      <a-image src="unnamed.jpg"></a-image>
+
+    </a-scene>
+
+    <script>
+      // Add the drag and drop event listeners to the document and process a dragged GLB file.
+      document.addEventListener(
+        "dragover",
+        function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          e.dataTransfer.dropEffect = "copy";
+        },
+        false
+      );
+
+      document.addEventListener(
+        "drop",
+        function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+
+          const files = e.dataTransfer.files; // Array of all files.
+
+          for (const file of files) {
+            // Process only GLB files.
+            if (file.name.endsWith(".glb")) {
+              const reader = new FileReader();
+
+              reader.onload = function (e) {
+                // Set the gltf-model-plus attribute of the gltf-model-plus component to the dropped file.
+                // Set an empty string as source as a workaround to force the "model-loaded" event
+                // when the same GLB is loaded again.
+                const gltfModelPlus = document.querySelector("[gltf-model-plus]");
+                gltfModelPlus.setAttribute("gltf-model-plus", "");
+                gltfModelPlus.setAttribute("gltf-model-plus", e.target.result);
+              };
+
+              reader.readAsDataURL(file);
+            }
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

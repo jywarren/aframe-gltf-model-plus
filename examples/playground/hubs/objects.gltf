@@ -1,0 +1,244 @@
+{
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "name": "Room Objects"
+    }
+  ],
+  "nodes": [
+    {
+      "translation": [
+        0.29563820362091064,
+        7.125567436218262,
+        6.783288478851318
+      ],
+      "scale": [
+        9.749695592194648,
+        9.749695592194646,
+        9.749695592194646
+      ],
+      "rotation": [
+        0.10677558277680793,
+        -0.15128736174574087,
+        0.009114412678528068,
+        0.9826637454295563
+      ],
+      "name": "96rw5vc",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "73aed843190a4dfda55f2b65cc0f8d63",
+            "id": "96rw5vc",
+            "contentSubtype": null
+          }
+        }
+      }
+    },
+    {
+      "translation": [
+        2.7235934734344482,
+        2.857743501663208,
+        -2.6380810737609863
+      ],
+      "scale": [
+        1.8818366808387972,
+        1.881836680838797,
+        1.8818366808387972
+      ],
+      "rotation": [
+        0.032818883451952406,
+        -0.030442372233117434,
+        -0.033961540594481504,
+        0.9984201503486574
+      ],
+      "name": "k69akvh",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "0c715897-829d-462e-b9d2-5ce812493697.png?token=2a441915941ee375bb3f5add1af4e1d9",
+            "id": "k69akvh",
+            "contentSubtype": null
+          }
+        }
+      }
+    },
+    {
+      "translation": [
+        -11.45691967010498,
+        1.7127330303192139,
+        9.19167709350586
+      ],
+      "scale": [
+        3.242719301890628,
+        3.242719301086903,
+        3.2427193018997476
+      ],
+      "rotation": [
+        0.06801050990963535,
+        -0.7884412914223866,
+        0.004582446068857538,
+        0.6113214402825972
+      ],
+      "name": "1pghgds",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "56d3b8a3-32f5-42fa-a55c-bbde41cfeb05.glb?token=d2b4ffe64fe261c26334ef514bcd80ac",
+            "id": "1pghgds",
+            "contentSubtype": null
+          }
+        }
+      }
+    },
+    {
+      "translation": [
+        -12.890578269958496,
+        2.413285493850708,
+        -1.5624052286148071
+      ],
+      "scale": [
+        36.81285203813564,
+        36.81285203813565,
+        36.81285203813565
+      ],
+      "rotation": [
+        -0.003916616981487833,
+        0.9264655122582309,
+        -0.14214957671127035,
+        -0.34848217150706196
+      ],
+      "name": "jeekntw",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "684f65d143f54de9820ed0287077a03a",
+            "id": "jeekntw",
+            "contentSubtype": null
+          }
+        }
+      }
+    },
+    {
+      "translation": [
+        1.515845537185669,
+        0.213557168841362,
+        12.800737380981445
+      ],
+      "scale": [
+        33.46089325724697,
+        33.46089317844466,
+        33.460893256188726
+      ],
+      "rotation": [
+        -0.18694549766695548,
+        0.9369883806937259,
+        -0.00938406450941802,
+        0.29498490596454563
+      ],
+      "name": "jjriiix",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "55118b23a5494e4b81eed831b9f8c871",
+            "id": "jjriiix",
+            "contentSubtype": null
+          }
+        }
+      }
+    },
+    {
+      "translation": [
+        112.10301971435547,
+        -77.2497329711914,
+        225.5018310546875
+      ],
+      "rotation": [
+        -0.5434516419902603,
+        -0.43869763344140705,
+        -0.4374629416878195,
+        0.5664193445503413
+      ],
+      "name": "uusz0zd",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "happy-day.mp4",
+            "id": "uusz0zd",
+            "contentSubtype": null
+          }
+        }
+      }
+    },
+    {
+      "translation": [
+        -0.8721095323562622,
+        2.8827693462371826,
+        -0.8518199920654297
+      ],
+      "scale": [
+        1.9577403751936862,
+        1.9577403751936862,
+        1.957740375193686
+      ],
+      "rotation": [
+        -0.0007966514968879027,
+        0.36792973579310834,
+        0.00036112583364347593,
+        0.9298531843542549
+      ],
+      "name": "1iu8cjx",
+      "extensions": {
+        "HUBS_components": {
+          "pinnable": {
+            "pinned": true
+          },
+          "media": {
+            "version": 1,
+            "src": "549682cb-f2a3-4624-afe1-6e56a3c8d289.png?token=e68a2abee2a6d0e0147983fb3f999000",
+            "id": "1iu8cjx",
+            "contentSubtype": null
+          }
+        }
+      }
+    }
+  ],
+  "extensionsUsed": [
+    "HUBS_components"
+  ],
+  "asset": {
+    "version": "2.0",
+    "generator": "reticulum"
+  }
+}
