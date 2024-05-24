@@ -92,9 +92,9 @@
     </template>
 
     <a-scene
-      arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'
+      arjs='sourceType: webcam; videoTexture: true; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: true;'
       light="defaultLightsEnabled:true"
-      renderer="physicallyCorrectLights:true;colorManagement:true"
+      renderer="physicallyCorrectLights:true;colorManagement:true;antialias: true; alpha: true"
       networked-scene="
         connectOnLoad: false;
         room: hub;
@@ -132,7 +132,7 @@
 
       <a-camera simulateAltitude="120" gps-new-camera></a-camera>
 
-      <a-entity position="0 0 -250" gps-new-entity-place="longitude: -71.415001; latitude: 41.820647;" class="environment-settings" gltf-model-plus="#sceneGLB"></a-entity>
+      <a-entity scale="0.5 0.5 0.5" gps-new-entity-place="longitude: -71.415001; latitude: 41.820647;" class="environment-settings" gltf-model-plus="#sceneGLB"></a-entity>
       <!--<a-entity class="environment-settings" gltf-model-plus="#objectsGLTF"></a-entity>-->
 <!-- 
  scale="0.5 0.5 0.5"
