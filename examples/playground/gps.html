@@ -18,8 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/networked-aframe/naf-valid-avatars@4b116a4/src/player-info.js"></script>
 
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js">
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js">
+    <script type='text/javascript' src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js">
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 
     <script>
       // @var url {string} The url as string.
@@ -138,6 +138,8 @@
  scale="0.5 0.5 0.5"
 lat: 41.82129802473228, lng: -71.41502773093613
 -->
+
+      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="longitude: -71.415001; latitude: 41.820647" scale="10 10 10"></a-entity>
 
       <a-entity light="type: ambient; intensity: 0.2"></a-entity>
       <a-entity light="type: directional; color: #f8f0ff; intensity: 0.6" position="-0.5 1 1"></a-entity>
