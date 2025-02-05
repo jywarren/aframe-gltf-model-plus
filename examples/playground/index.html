@@ -109,8 +109,14 @@
       -->
       <a-assets timeout="30000">
         <!-- <a-asset-item id="sceneGLB" src="./hubs_components_example_001.glb"></a-asset-item>-->
+        <!--
         <a-asset-item id="sceneGLB" src="./burrill.glb"></a-asset-item>
         <a-asset-item id="objectsGLTF" src="./objects.gltf"></a-asset-item>
+
+// replace reticulum URLs for /files/: %s/https\:\/\/uploads\-prod\.reticulum\.io//g
+        -->
+        <a-asset-item id="sceneGLB" src="./together-shovel.glb"></a-asset-item>
+        <a-asset-item id="objectsGLTF" src="./together-shovel.gltf"></a-asset-item>
       </a-assets>
       <a-entity
         id="rig"
@@ -126,15 +132,18 @@
 
       <a-entity class="environment-settings" gltf-model-plus="#sceneGLB"></a-entity>
 
-      <a-entity light="type: ambient; intensity: 0.2"></a-entity>
-      <a-entity light="type: directional; color: #f8f0ff; intensity: 0.6" position="-0.5 1 1"></a-entity>
-
-      <a-entity light="type: point; color: #f4f4f4; intensity: 10.0; distance: 0" position="0 2 0"></a-entity>
+     <a-entity light="type: ambient; intensity: 1"></a-entity>
+     <a-entity light="type: directional; color: #f8f0ff; intensity: 4" position="-0.5 1 1"></a-entity>
+      <a-entity light="type: point; color: #f4f4f4; intensity: 4.0; distance: 0" position="0 2 0"></a-entity>
 
       <a-image src="unnamed.jpg"></a-image>
 
+      <a-screenshot></a-screenshot>
+
     </a-scene>
 
+<a onClick="document.querySelector('a-scene').components.screenshot.capture('equirectangular')
+" style="position:absolute;top:0;left:0;background: white;padding:3px;">Screenshot</a>
     <!--
       See https://github.com/networked-aframe/naf-nametag-solidjs/blob/main/public/ui-components.html
       for more details on how to use the web components.
